@@ -1,3 +1,7 @@
+# Download
+
+Download "http://www.country-files.com/bigcty/cty.dat"
+
 # Usage
 
 (async () => {
