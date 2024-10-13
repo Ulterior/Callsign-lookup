@@ -209,7 +209,7 @@ class AD1CCtyImpl {
             prefix = prefix.slice(1);
             exact = true;
           }
-          this.prefixes.set(prefix, { exact, entityId });
+          this.prefixes.set(prefix, { prefix, exact, entityId });
         }
       }
     }
