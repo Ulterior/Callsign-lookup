@@ -2,7 +2,7 @@ class AD1CCtyImpl {
   constructor() {
     this.entities = new Map(); // Simulating the entity container
     this.prefixes = new Map();
-    this.nonPrefixSuffix = /^([0-9AMPQR]|QRP|F[DF]|[AM]M|L[HT]|LGT)$/;
+    this.nonPrefixSuffix = /^([0-9AMPQR]|QRP[P]*|F[DF]|[AM]M|L[HT]|LGT)$/;
   }
 
   // Lookup entity based on a call and prefix
