@@ -12,7 +12,8 @@ class AD1CCtyImpl {
     // Deal with special rules not handled by cty.dat
     if (call.startsWith('KG4') && call.length !== 5 && call.length !== 3) {
       // KG4 2x1 and 2x3 calls that map to Gitmo are mainland US, not Gitmo
-      return this.entities.get('K'); // Return the "K" entity (mainland US)
+      let kp = this.prefixes.get("K"); // Return the "K" entity (mainland US)
+      return this.entities.get(kp.entityId);
     } else {
       // Use the entity_id from the prefix object to find the entity
       return this.entities.get(prefixObj.entityId);
