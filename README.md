@@ -1,6 +1,7 @@
 # Download
+You must have cty.dat downloaded from officially maintained site
 
-Download "http://www.country-files.com/bigcty/cty.dat"
+Download it here http://www.country-files.com/bigcty/cty.dat
 
 # Usage
 
@@ -16,3 +17,4 @@ Download "http://www.country-files.com/bigcty/cty.dat"
         }
     })();
 
+# Demo
