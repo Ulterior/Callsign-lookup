@@ -184,8 +184,8 @@ class AD1CCtyImpl {
 
     const lineIter = this.createLineIterator(fileUri);
 
-    let result;
-    while (!(result = await lineIter.next()).done) {
+    let entityLine;
+    while (!(entityLine = await lineIter.next()).done) {
   
       lineNumber++;
       const entityParts = entityLine.split(':');
