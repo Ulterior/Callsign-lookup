@@ -1,6 +1,6 @@
 function mySubmitFunction(event) {
 	
-	let callSign = $("#searchCallSign").val().trim();
+	let callSign = $("#inputCallsign").val().trim();
 
 	(async () => {
 		const ad1cCtyImpl = new AD1CCtyImpl();
