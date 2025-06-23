@@ -136,23 +136,22 @@ class AD1CCtyImpl {
   }
 
   // Load data from file
-  async loadCty(fileUri) {
+  async loadCty(filePath) {
     let entityId = 0;
     let lineNumber = 0;
 
     this.entities.clear();
     this.prefixes.clear();
 
+    const fileStream = fs.createReadStream(filePath);
+    const rl = readline.createInterface({
+      input: fileStream,
+      crlfDelay: Infinity,
+    });
 
-	const response = await fetch(fileUri);
-    if (!response.ok) {
-		throw new Error(`Failed to fetch file: ${response.status}`);
-	}
-    const text = await response.text();
-    const lines = text.split(/\r?\n/);
+    let rlIter = rl[Symbol.asyncIterator]();
 
-    for (const entityLine of lines) {
-  
+    for await (const entityLine of rlIter) {
       lineNumber++;
       const entityParts = entityLine.split(':');
 
