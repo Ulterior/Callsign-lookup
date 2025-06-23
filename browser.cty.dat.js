@@ -182,7 +182,7 @@ class AD1CCtyImpl {
     this.entities.clear();
     this.prefixes.clear();
 
-    const lineIter = this.createLineIterator('cty.dat');
+    const lineIter = this.createLineIterator(fileUri);
 
     let result;
     while (!(result = await lineIter.next()).done) {
