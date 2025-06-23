@@ -5,7 +5,7 @@ function mySubmitFunction(event) {
 	(async () => {
 		const ad1cCtyImpl = new AD1CCtyImpl();
 		try {
-			await ad1cCtyImpl.loadCty("cty.dat.js"); // Replace with your file path
+			await ad1cCtyImpl.loadCty("demo/cty.dat"); // Replace with your file path
 			console.log("Entities:" + ad1cCtyImpl.entities.size);
 			console.log("Prefixes:" + ad1cCtyImpl.prefixes.size);
 			console.log(ad1cCtyImpl.lookup(callSign));
