@@ -188,7 +188,7 @@ class AD1CCtyImpl {
     while (!(entityLine = await lineIter.next()).done) {
   
       lineNumber++;
-      const entityParts = entityLine.split(':');
+      const entityParts = entityLine.value.split(':');
 
       if (entityParts.length >= 8) {
         let primaryPrefix = entityParts[7].trim();
