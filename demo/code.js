@@ -20,13 +20,13 @@ $(function(){
 
 	const params = new URLSearchParams(window.location.search);
 	const callSign = params.get('cs'); // "LY1H"
-	if(callSign && callSign.length > 0) {
+	if(callSign) {
 		mySubmitFunction(callSign)
 	}
 
     $("#searchCallSign").click(function (event) {
 		let callSign = $("#inputCallsign").val().trim();
-		if(callSign && callSign.length > 0) {
+		if(callSign) {
 			mySubmitFunction(callSign);		
 		}
     });
