@@ -9,7 +9,7 @@ function mySubmitFunction(callSign) {
 			console.log("Entities:" + ad1cCtyImpl.entities.size);
 			console.log("Prefixes:" + ad1cCtyImpl.prefixes.size);
 			let message =  ad1cCtyImpl.lookup(callSign);
-			$("#result").html(JSON.stringify(message, null, 2));
+			$("#result").html(callSign + "decoded to:<br/>" + JSON.stringify(message, null, 2));
 		} catch (error) {
 			console.error(error);
 		}
