@@ -135,6 +135,45 @@ class AD1CCtyImpl {
     return continent;
   }
 
+	function createLineIterator(url) {
+	  const decoder = new TextDecoder();
+	  let reader, buffer = '', lines = [];
+
+	  let initialized = fetch(url)
+		.then(res => {
+		  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+		  reader = res.body.getReader();
+		});
+
+	  return {
+		async next() {
+		  await initialized;
+
+		  while (lines.length === 0) {
+			const { value, done } = await reader.read();
+
+			if (done) {
+			  if (buffer) {
+				// last line in buffer
+				const finalLine = buffer;
+				buffer = '';
+				return { value: finalLine, done: false };
+			  }
+			  return { value: undefined, done: true };
+			}
+
+			buffer += decoder.decode(value, { stream: true });
+
+			const split = buffer.split(/\r?\n/);
+			buffer = split.pop(); // save partial line
+			lines = split;
+		  }
+
+		  return { value: lines.shift(), done: false };
+		}
+	  };
+	}
+
   // Load data from file
   async loadCty(fileUri) {
     let entityId = 0;
@@ -143,15 +182,10 @@ class AD1CCtyImpl {
     this.entities.clear();
     this.prefixes.clear();
 
+    const lineIter = createLineIterator('cty.dat');
 
-	const response = await fetch(fileUri);
-    if (!response.ok) {
-		throw new Error(`Failed to fetch file: ${response.status}`);
-	}
-    const text = await response.text();
-    const lines = text.split(/\r?\n/);
-
-    for (const entityLine of lines) {
+    let result;
+    while (!(result = await lineIter.next()).done) {
   
       lineNumber++;
       const entityParts = entityLine.split(':');
@@ -197,8 +231,8 @@ class AD1CCtyImpl {
 
         let detail = '';
         let line = '';
-        do {
-          line = await rlIter.next();
+        do {		
+          line = await lineIter.next()			    		
           lineNumber++;
           detail += line.value;
         } while (!line.value.endsWith(';'));
