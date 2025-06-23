@@ -135,7 +135,7 @@ class AD1CCtyImpl {
     return continent;
   }
 
-	function createLineIterator(url) {
+  createLineIterator(url) {
 	  const decoder = new TextDecoder();
 	  let reader, buffer = '', lines = [];
 
