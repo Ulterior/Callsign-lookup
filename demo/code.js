@@ -1,5 +1,7 @@
 function mySubmitFunction(callSign) {
 	
+	$("#result").html("");
+	
 	(async () => {
 		const ad1cCtyImpl = new AD1CCtyImpl();
 		try {
@@ -18,14 +20,15 @@ $(function(){
 
 	const params = new URLSearchParams(window.location.search);
 	const callSign = params.get('cs'); // "LY1H"
-
-	if(callSign) {
+	if(callSign && callSign.length > 0) {
 		mySubmitFunction(callSign)
 	}
 
     $("#searchCallSign").click(function (event) {
 		let callSign = $("#inputCallsign").val().trim();
-		mySubmitFunction(callSign);		
+		if(callSign && callSign.length > 0) {
+			mySubmitFunction(callSign);		
+		}
     });
 	
 });
