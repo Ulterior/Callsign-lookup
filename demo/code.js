@@ -21,6 +21,7 @@ $(function(){
 	const params = new URLSearchParams(window.location.search);
 	const callSign = params.get('cs'); // "LY1H"
 	if(callSign) {
+		$("#inputCallsign").val(callSign);
 		mySubmitFunction(callSign)
 	}
 
