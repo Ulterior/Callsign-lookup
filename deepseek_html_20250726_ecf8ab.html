@@ -182,16 +182,17 @@
 							// Clean up callsign (remove /P, /M, etc.)
 							if(isValidCallsign(callsign)) {
 								const cleanCall = callsign;//.split('/')[0];
-								
-								if (!callsignData[grid]) {
-									callsignData[grid] = [];
-								}
-								
+															
 								if (!callsignData[grid].includes(cleanCall)) {
 								
 									let message =  ad1cCtyImpl.lookup(callsign);
 									
 									if(null != message) {
+
+										if (!callsignData[grid]) {
+											callsignData[grid] = [];
+										}
+
 										callsignData[grid].push(cleanCall);
 										totalCallsigns++;
 									}
