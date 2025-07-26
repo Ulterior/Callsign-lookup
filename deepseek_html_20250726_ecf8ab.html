@@ -186,8 +186,7 @@
 								
 								let message =  ad1cCtyImpl.lookup(callsign);
 								
-								if((!(dest !== 'CQ' && !dest.startsWith('<') && 
-									!dest.endsWith('>') || (isValidCallsign(dest) && null !== ad1cCtyImpl.lookup(dest)))) && null != message) {
+								if(((dest !== 'CQ') || (!(dest.startsWith('<') && dest.endsWith('>')) && isValidCallsign(dest) && null !== ad1cCtyImpl.lookup(dest))) && null != message) {
 
 									if (!callsignData[grid]) {
 										callsignData[grid] = [];
