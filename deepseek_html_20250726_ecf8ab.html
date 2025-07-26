@@ -167,7 +167,7 @@
 					const grid = parts[parts.length - 1];
 					
 					// Check if it's a valid grid (4 characters starting with 2 letters)
-					if (/^[A-R]{2}[0-9]{2}$/.test(grid) && !parts.some(item => item.includes("/R"))) {
+					if (/^[A-R]{2}[0-9]{2}$/.test(grid) && !parts.some(item => (item.includes("/R") || item.includes("/P")))) {
 						// Get all callsigns in the line (excluding CQ and the grid)
 						//const callsigns = parts.filter(part => 
 						//    part !== 'CQ' && 
