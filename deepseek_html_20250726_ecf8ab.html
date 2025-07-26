@@ -176,6 +176,7 @@
 						//    !part.endsWith('>')
 						//);
 						
+						const dest = parts[parts.length - 1];											
 						const callsign = parts[parts.length - 2];
 						
 	//                    callsigns.forEach(callsign => {
@@ -185,7 +186,8 @@
 								
 								let message =  ad1cCtyImpl.lookup(callsign);
 								
-								if(null != message) {
+								if((!(dest !== 'CQ' && !dest.startsWith('<') && 
+									!dest.endsWith('>') || (isValidCallsign(dest) && null !== ad1cCtyImpl.lookup(dest)))) && null != message) {
 
 									if (!callsignData[grid]) {
 										callsignData[grid] = [];
